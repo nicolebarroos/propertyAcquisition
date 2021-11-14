@@ -1,7 +1,6 @@
 from django.db import models
 
 
-
 class Users(models.Model):
     INCOME = (
         (0, 'Formal'),
