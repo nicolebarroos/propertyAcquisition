@@ -3,22 +3,22 @@ from django.db import models
 
 class Users(models.Model):
     INCOME = (
-        (0, 'Formal'),
-        (1, 'Informal'),
-        (2, 'Mista'),
+        ('Formal', 'Formal'),
+        ('Informal', 'Informal'),
+        ('Mista', 'Mista'),
     )
 
     MARITAL_STATUS = (
-        (0, 'Solteiro(a)'),
-        (1, 'Casado(a)'),
-        (2, 'Viúvo(a)'),
-        (3, 'Separado(a)'),
-        (4, 'Divorciado(a)'),
+        ('Solteiro(a)', 'Solteiro(a)'),
+        ('Casado(a)', 'Casado(a)'),
+        ('Viúvo(a)', 'Viúvo(a)'),
+        ('Separado(a)', 'Separado(a)'),
+        ('Divorciado(a)', 'Divorciado(a)'),
     )
 
     SERVICE = (
-        (0, 'Habitacional'),
-        (1, 'Comercial'),
+        ('Habitacional', 'Habitacional'),
+        ('Comercial', 'Comercial'),
     )
     employees = models.ForeignKey('employees.Employees', on_delete=models.CASCADE)
     name = models.CharField('Nome', max_length=50, blank=False, null=False)
@@ -34,6 +34,9 @@ class Users(models.Model):
     agency = models.CharField('Agência', max_length=50, blank=False, null=False)
     service = models.CharField('Renda', max_length=50, choices=SERVICE, blank=False, null=False)
     enterprise = models.CharField('Empreendimento', max_length=50, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = 'Cliente'
