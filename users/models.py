@@ -34,6 +34,7 @@ class Users(models.Model):
     agency = models.CharField('Agência', max_length=50, blank=False, null=False)
     service = models.CharField('Renda', max_length=50, choices=SERVICE, blank=False, null=False)
     enterprise = models.CharField('Empreendimento', max_length=50, blank=True, null=True)
+    file = models.FileField(verbose_name="Arquivos", null=True, blank=True, upload_to="files/")
 
     def __str__(self):
         return self.name
