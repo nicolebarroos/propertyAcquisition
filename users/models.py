@@ -20,7 +20,7 @@ class Users(models.Model):
         ('Habitacional', 'Habitacional'),
         ('Comercial', 'Comercial'),
     )
-    employees = models.ForeignKey('employees.Employees', on_delete=models.CASCADE)
+    employees = models.ForeignKey('employees.Employees', on_delete=models.CASCADE, verbose_name='Corretor')
     name = models.CharField('Nome', max_length=50, blank=False, null=False)
     cpf = models.CharField('CPF', max_length=50, blank=False, null=False)
     phone = models.CharField('Telefone', max_length=50, blank=False, null=False)

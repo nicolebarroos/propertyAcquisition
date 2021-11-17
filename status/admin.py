@@ -6,10 +6,7 @@ from django.db import models
 
 
 class StatusAdmin(admin.ModelAdmin):
-    formfield_overrides = {
-        models.CharField: {'widget': TextInput(attrs={'size': '50'})},
-
-    }
+    list_display = ['cliente', 'status']
 
 
 admin.site.register(Status, StatusAdmin)
