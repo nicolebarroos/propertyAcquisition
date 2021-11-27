@@ -8,5 +8,5 @@ class EmployeesAdmin(UserAdmin):
 
 
 admin.site.register(Employees, EmployeesAdmin)
-admin.site.site_header = "Aquisições de imóveis"
-admin.site.index_title = "Administração"
+admin.site.site_header = "Sete soluções imobiliárias"
+admin.site.index_title = "Processos"

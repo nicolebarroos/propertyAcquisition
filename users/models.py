@@ -20,7 +20,7 @@ class Users(models.Model):
         ('Habitacional', 'Habitacional'),
         ('Comercial', 'Comercial'),
     )
-    employees = models.ForeignKey('employees.Employees', on_delete=models.CASCADE, verbose_name='Corretor')
+    employees = models.CharField('Corretor', max_length=50, blank=False, null=False)
     name = models.CharField('Nome', max_length=50, blank=False, null=False)
     cpf = models.CharField('CPF', max_length=50, blank=False, null=False)
     phone = models.CharField('Telefone', max_length=50, blank=False, null=False)
@@ -32,9 +32,8 @@ class Users(models.Model):
     broker = models.CharField('Telefone do corretor', max_length=50, blank=False, null=False)
     real_estate = models.CharField('Imobiliária', max_length=50, blank=True, null=True)
     agency = models.CharField('Agência', max_length=50, blank=False, null=False)
-    service = models.CharField('Renda', max_length=50, choices=SERVICE, blank=False, null=False)
+    service = models.CharField('Tipo de serviço', max_length=50, choices=SERVICE, blank=False, null=False)
     enterprise = models.CharField('Empreendimento', max_length=50, blank=True, null=True)
-    file = models.FileField(verbose_name="Arquivos", null=True, blank=True, upload_to="files/")
 
     def __str__(self):
         return self.name
@@ -44,3 +43,13 @@ class Users(models.Model):
         verbose_name_plural = 'Clientes'
 
 
+class Files(models.Model):
+    file = models.FileField(verbose_name='Documentos', upload_to='files/', null=True, blank=True)
+    user = models.ForeignKey(to=Users, on_delete=models.CASCADE, related_name="file_user", null=True, blank=True)
+
+    def __str__(self):
+        return 'Documentos'
+
+    class Meta:
+        verbose_name = 'Documento'
+        verbose_name_plural = 'Documentos'

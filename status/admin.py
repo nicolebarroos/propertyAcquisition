@@ -8,7 +8,7 @@ from django.db import models
 
 class StatusAdmin(admin.ModelAdmin):
     list_display = ['cliente', 'status']
-    form = CategoryFieldForm
+    list_filter = ['status']
 
 
 admin.site.register(Status, StatusAdmin)

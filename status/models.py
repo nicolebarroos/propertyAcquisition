@@ -28,7 +28,7 @@ class Status(models.Model):
     )
     cliente = models.ForeignKey('users.Users', on_delete=models.CASCADE, default='')
     status = models.CharField('Status', max_length=50, choices=STATUS_CHOICES, blank=False, null=False)
-    informacoes = models.TextField('Informações adcionais referente ao status', max_length=250, blank=False, null=False,
+    informacoes = models.TextField('Informações adcionais referente ao status', max_length=250, blank=True, null=True,
                                    default='')
     Data = models.DateTimeField('Data da última atualização', blank=False, null=False, default=now)
 
