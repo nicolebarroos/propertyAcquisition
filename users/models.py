@@ -1,4 +1,5 @@
 from django.db import models
+from simple_history.models import HistoricalRecords
 
 
 class Users(models.Model):
@@ -34,6 +35,7 @@ class Users(models.Model):
     agency = models.CharField('Agência', max_length=50, blank=False, null=False)
     service = models.CharField('Tipo de serviço', max_length=50, choices=SERVICE, blank=False, null=False)
     enterprise = models.CharField('Empreendimento', max_length=50, blank=True, null=True)
+    history = HistoricalRecords()
 
     def __str__(self):
         return self.name
